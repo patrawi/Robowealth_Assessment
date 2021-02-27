@@ -1,0 +1,22 @@
+type Query {
+    allItem: [Item!]!
+    Tobuy(id: ID!): Item
+}
+
+type Mutation {
+    createItem(title: String!, price: Int!): Item!
+    deleteItem(id: ID!): Item
+    updateItem(id: ID!, data: UpdateItemData!):Item
+}
+
+
+input UpdateItemData {
+    title: String!
+    price: Int!
+}
+
+type Item @entity {
+    id: ID!  @id
+    title: String! @column
+    price: Int! @column
+}
